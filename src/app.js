@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require("./middleware/error");
 
 const corsOptions = {
-    origin: ["https://nivakcloud.netlify.app"], // List of allowed origins
+    origin: "https://nivakcloud.netlify.app", // List of allowed origins
     credentials: true,
 };
 
