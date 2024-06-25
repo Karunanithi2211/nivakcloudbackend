@@ -8,6 +8,8 @@ const cors = require("cors")
 const cookieParser = require('cookie-parser');
 const errorHandler = require("./middleware/error")
 
+const serverless = require("serverless-http")
+
 const corsOptions = {
     origin: 'http://localhost:3000', // Replace with your client domain
     credentials: true,
@@ -34,8 +36,7 @@ app.use("/api",auth);
 // ERROR MIDDLEWARE
 app.use(errorHandler);
 
-const port = process.env.PORT;
 
-app.listen(port, () => {
-    console.log(`App is running on port ${port}`);
-})
+
+module.exports = app;
+module.exports.handler = serverless(app);
