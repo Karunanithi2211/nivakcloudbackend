@@ -1,4 +1,3 @@
-// src/app.js
 const express = require("express");
 const app = express();
 require("dotenv").config();
@@ -10,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require("./middleware/error");
 
 const corsOptions = {
-    origin: "https://nivakcloud.netlify.app/",
+    origin: "https://nivakcloud.netlify.app", // No trailing slash
     credentials: true,
 };
 
