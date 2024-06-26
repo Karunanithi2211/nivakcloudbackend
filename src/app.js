@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require("./middleware/error");
 
 const corsOptions = {
-    origin: "https://nivakcloud.netlify.app", // List of allowed origins
+    origin: "https://nivakcloud.netlify.app",
     credentials: true,
 };
 
@@ -32,5 +32,9 @@ app.use("/api", auth);
 
 // Error Middleware
 app.use(errorHandler);
+
+/*app.listen(8000, () => {
+    console.log("Port running on 8000");
+})*/
 
 module.exports = app;

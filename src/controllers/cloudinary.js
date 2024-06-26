@@ -98,12 +98,13 @@ exports.allFiles = async (req, res, next) => {
 
 exports.deleteFolder = async (req, res, next) => {
     const folderName = req.body.folderPath;
-    console.log(folderName);
+    console.log("folderName received: ",folderName);
     try {
         const deleteFile = await cloudinary.api.delete_resources_by_prefix(folderName + "/");
+        console.log("DeletedFile result: ", deleteFile);
         
         const deleteFolder = await cloudinary.api.delete_folder(folderName);
-
+        console.log("DeletedFolder result: ", deleteFolder);
         res.status(200).json({ success: true, message: 'Folder deleted successfully' });
     } catch (error) {
         console.error('Error in deleting folder:', error);
