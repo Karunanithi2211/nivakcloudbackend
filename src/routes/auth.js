@@ -11,7 +11,7 @@ router.use(fileUpload())
 router.post('/signup', signUp);
 router.post('/signin', signIn);
 router.get('/logout', logOut);
-router.get('/getme', isAuthenticated, userProfile);
+router.post('/getme', isAuthenticated, userProfile);
 router.get('/user/:id', singleUser);
 router.post('/cloud/allfolderfiles', findAllFolderAndFile)
 router.post('/cloud/createfolder', createFolderInCloud)
