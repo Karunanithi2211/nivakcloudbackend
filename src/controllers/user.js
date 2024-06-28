@@ -82,10 +82,15 @@ exports.userProfile = async (req, res, next) => {
         if (!user) {
             return res.status(404).json({ success: false, message: 'User not found' });
         }
-        res.status(200).json({ success: true, data: user });
+        res.status(200).json({ 
+            success: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*', // or specific origin
+                'Access-Control-Allow-Headers': 'Content-Type',
+            }, 
+            data: user });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ success: false, message: 'Server Error' });
+        res.status(500).json({ success: false, message: 'UserProfile Error: '+error });
     }
 }
 
