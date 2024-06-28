@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
-const ErrorResponse = require('../utils/errorResponse')
+const ErrorResponse = require('../utils/errorResponse');
+const { userProfile } = require('../controllers/user');
 
 
 exports.isAuthenticated = async (req, res, next) => {
@@ -12,7 +13,7 @@ exports.isAuthenticated = async (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = await User.findById(decoded.id);
-        next();
+        userProfile();
     } catch (error) {
         return res.status(401).json({ success: false, message: 'Unauthorized '+ error });
     }
