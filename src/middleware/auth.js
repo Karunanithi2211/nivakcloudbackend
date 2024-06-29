@@ -4,7 +4,14 @@ const ErrorResponse = require('../utils/errorResponse')
 
 
 exports.isAuthenticated = async (req, res, next) => {
-    const token = req.data.token;
+    const authHeader = req.headers.authorization;
+    const token = ""
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+        token = authHeader.split(' ')[1];
+    } else {
+        req.token = null;
+    }
+    
     if (!token) {
         return res.status(401).json({ success: false, message: 'Unauthorized Token not found'+token });
     }
